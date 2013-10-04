@@ -1136,14 +1136,6 @@ static int msm_actuator_close(struct v4l2_subdev *sd,
 			pr_err("cci_init failed\n");
 	}
 
-#if defined(CONFIG_MACH_LGE)
-/* LGE_CHANGE, Fix memory leak, step_position_table is not freed */
-	if (a_ctrl->step_position_table != NULL) {
-		kfree(a_ctrl->step_position_table);
-		a_ctrl->step_position_table = NULL;
-	}
-#endif
-
 	kfree(a_ctrl->i2c_reg_tbl);
 	a_ctrl->i2c_reg_tbl = NULL;
 
