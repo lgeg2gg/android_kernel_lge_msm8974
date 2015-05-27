@@ -2109,6 +2109,13 @@ static int unix_stream_recvmsg(struct kiocb *iocb, struct socket *sock,
 		struct sk_buff *skb;
 
 		unix_state_lock(sk);
+<<<<<<< HEAD
+=======
+		if (sock_flag(sk, SOCK_DEAD)) {
+			err = -ECONNRESET;
+			goto unlock;
+		}
+>>>>>>> 02571485ecd... New Build Breakage in branch: kernel-m-dev-tegra-flounder-3.10 @ 1960706
 		skb = skb_peek(&sk->sk_receive_queue);
 again:
 		if (skb == NULL) {
