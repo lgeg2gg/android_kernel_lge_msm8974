@@ -666,7 +666,6 @@ dhdpcie_bus_release(dhd_bus_t *bus)
 		if (bus->dhd) {
 			dongle_isolation = bus->dhd->dongle_isolation;
 			if (bus->intr) {
-				dhdpcie_bus_intr_disable(bus);
 				dhdpcie_free_irq(bus);
 			}
 			dhd_detach(bus->dhd);
